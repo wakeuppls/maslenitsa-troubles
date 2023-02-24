@@ -10,8 +10,8 @@ public class CameraBehaviour : MonoBehaviour
     {
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
-    private void LateUpdate()
+    private void Update()
     {
-        this.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, -100);
+       this.transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, -100);
     }
 }
