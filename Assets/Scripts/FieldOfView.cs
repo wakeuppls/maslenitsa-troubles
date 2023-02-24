@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float fov = 90f;
     [SerializeField] private int rayCount = 150;
@@ -20,7 +19,7 @@ public class FieldOfView : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         float angleIncrease = fov / rayCount;
 
@@ -38,7 +37,7 @@ public class FieldOfView : MonoBehaviour
             Vector3 v = new Vector3(Mathf.Cos(angRad), Mathf.Sin(angRad));
             Vector3 vertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin , v, viewDistance);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin , v, viewDistance, layerMask);
             if (raycastHit2D.collider == null)
             {
                 vertex = origin + v * viewDistance;
