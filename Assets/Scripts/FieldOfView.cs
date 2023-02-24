@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float fov = 90f;
     [SerializeField] private int rayCount = 150;
@@ -20,8 +21,7 @@ public class FieldOfView : MonoBehaviour
 
     private void Update()
     {
-        SetOrigin(transform.parent.position);
-        origin = transform.parent.position;
+        origin = player.transform.position;
         float angle = 0f;
         float angleIncrease = fov / rayCount;
 
@@ -29,7 +29,7 @@ public class FieldOfView : MonoBehaviour
         Vector2[] uv = new Vector2[verticles.Length];
         int[] triangles = new int[rayCount * 3];
 
-        verticles[0] = new Vector3(0, 0, 0);    
+        verticles[0] = origin;    
 
         int vertexIndex = 1;
         int triangleIndex = 0;
@@ -39,7 +39,7 @@ public class FieldOfView : MonoBehaviour
             Vector3 v = new Vector3(Mathf.Cos(angRad), Mathf.Sin(angRad));
             Vector3 vertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, v, viewDistance, layerMask);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin , v, viewDistance, layerMask);
             if (raycastHit2D.collider == null)
             {
                 vertex = origin + v * viewDistance;
