@@ -25,11 +25,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
-            anim.Play("Player_walk");
+            anim.SetBool("isWalk", true);
         }
         else
         {
-            anim.Play("Player_idle");
+            anim.SetBool("isWalk", false);
         }
         this.transform.Translate(Vector2.right * Time.fixedDeltaTime * hInput);
         this.transform.Translate(Vector2.up * Time.fixedDeltaTime * vInput);
