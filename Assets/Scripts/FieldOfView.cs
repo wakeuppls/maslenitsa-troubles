@@ -21,6 +21,7 @@ public class FieldOfView : MonoBehaviour
 
     public void LateUpdate()
     {
+        Debug.Log(origin);
         float angleIncrease = fov / rayCount;
 
         Vector3[] verticles = new Vector3[rayCount + 1 + 1];
@@ -63,6 +64,7 @@ public class FieldOfView : MonoBehaviour
         mesh.vertices = verticles;
         mesh.uv = uv;
         mesh.triangles = triangles;
+        mesh.bounds = new Bounds(origin, Vector3.one * 1000f);
     }
 
     public void SetOrigin(Vector3 origin)
