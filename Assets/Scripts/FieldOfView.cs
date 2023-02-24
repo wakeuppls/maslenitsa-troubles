@@ -11,6 +11,7 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] private float viewDistance = 10f;
 
     Vector3 origin;
+    float angle;
 
     Mesh mesh = new Mesh();
     void Start()
@@ -19,10 +20,8 @@ public class FieldOfView : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
-    private void Update()
+    public void Update()
     {
-        origin = player.transform.position;
-        float angle = 0f;
         float angleIncrease = fov / rayCount;
 
         Vector3[] verticles = new Vector3[rayCount + 1 + 1];
@@ -39,7 +38,7 @@ public class FieldOfView : MonoBehaviour
             Vector3 v = new Vector3(Mathf.Cos(angRad), Mathf.Sin(angRad));
             Vector3 vertex;
 
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin , v, viewDistance, layerMask);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin , v, viewDistance);
             if (raycastHit2D.collider == null)
             {
                 vertex = origin + v * viewDistance;
@@ -70,5 +69,10 @@ public class FieldOfView : MonoBehaviour
     public void SetOrigin(Vector3 origin)
     {
         this.origin = origin;
+    }
+
+    public void SetAngle(float angle)
+    {
+        this.angle = angle - fov / 2;
     }
 }
