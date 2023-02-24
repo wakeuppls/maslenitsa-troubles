@@ -21,7 +21,6 @@ public class FieldOfView : MonoBehaviour
 
     public void LateUpdate()
     {
-        Debug.Log(origin);
         float angleIncrease = fov / rayCount;
 
         Vector3[] verticles = new Vector3[rayCount + 1 + 1];
