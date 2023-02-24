@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float fov = 90f;
+    [SerializeField] private int rayCount = 150;
+    [SerializeField] private float viewDistance = 10f;
+
+    Vector3 origin;
+
+    Mesh mesh = new Mesh();
     void Start()
     {
-        Mesh mesh = new Mesh();
+        mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+    }
 
-        float fov = 90f;
-        Vector3 origin = new Vector3(0, 0, 0);
-        int rayCount = 7;
+    private void Update()
+    {
+        SetOrigin(transform.parent.position);
+        origin = transform.parent.position;
         float angle = 0f;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 10f;
 
         Vector3[] verticles = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[verticles.Length];
         int[] triangles = new int[rayCount * 3];
 
-        verticles[0] = origin;
+        verticles[0] = new Vector3(0, 0, 0);    
 
         int vertexIndex = 1;
         int triangleIndex = 0;
@@ -28,8 +37,17 @@ public class FieldOfView : MonoBehaviour
         {
             float angRad = angle * (Mathf.PI / 180f);
             Vector3 v = new Vector3(Mathf.Cos(angRad), Mathf.Sin(angRad));
-            Vector3 vertex = origin + v * viewDistance;
+            Vector3 vertex;
 
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, v, viewDistance, layerMask);
+            if (raycastHit2D.collider == null)
+            {
+                vertex = origin + v * viewDistance;
+            }
+            else
+            {
+                vertex = raycastHit2D.point;
+            }
             verticles[vertexIndex] = vertex;
 
             if (i > 0)
@@ -47,5 +65,10 @@ public class FieldOfView : MonoBehaviour
         mesh.vertices = verticles;
         mesh.uv = uv;
         mesh.triangles = triangles;
+    }
+
+    public void SetOrigin(Vector3 origin)
+    {
+        this.origin = origin;
     }
 }
