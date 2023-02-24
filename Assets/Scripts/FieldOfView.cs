@@ -12,7 +12,7 @@ public class FieldOfView : MonoBehaviour
     Vector3 origin;
     float angle;
 
-    Mesh mesh = new Mesh();
+    Mesh mesh;
     void Start()
     {
         mesh = new Mesh();
