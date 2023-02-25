@@ -24,11 +24,23 @@ public class TransparancyObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
             insideObject = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            insideObject = true;
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+            insideObject = false;
+    }
+
     private void Update()
     {
         if (insideObject)
         {
-            if (transform.position.y >= tranformPlayer.position.y)
+            if (transform.position.y >= tranformPlayer.GetComponent<BoxCollider2D>().bounds.min.y)
             {
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerID = SortingLayer.NameToID("ObjBottom");
             }
