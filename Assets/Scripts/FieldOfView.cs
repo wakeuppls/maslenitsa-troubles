@@ -12,6 +12,7 @@ public class FieldOfView : MonoBehaviour
 
     Vector3 origin;
     float angle;
+    float baseAngle;
     float targetAngle;
     Mesh mesh;
 
@@ -24,37 +25,40 @@ public class FieldOfView : MonoBehaviour
 
     public void LateUpdate()
     {
-        /*if (angle < 0) angle += 360;
-        if (targetAngle > angle)
+        if (targetAngle < 0) targetAngle += 360;
+        if (baseAngle < 0) baseAngle += 360;
+        if (targetAngle > baseAngle)
         {
-            if (targetAngle - angle < 180)
+            if (targetAngle - baseAngle < baseAngle - (targetAngle - 360))
             {
-                if (targetAngle - angle < rotationVelocity) angle = targetAngle;
-                else angle += rotationVelocity;
+                if (targetAngle - baseAngle < rotationVelocity) baseAngle = targetAngle;
+                else baseAngle += rotationVelocity;
             }
             else
             {
-                if (angle + 360 - targetAngle < rotationVelocity) angle = targetAngle;
-                else angle += 360 - rotationVelocity;
+                if (baseAngle - (targetAngle - 360) < rotationVelocity) baseAngle = targetAngle;
+                else baseAngle -= rotationVelocity;
             }
         }
         else
         {
-            if (angle - targetAngle < 180)
+            if (baseAngle - targetAngle < targetAngle - (baseAngle - 360))
             {
-                if (angle - targetAngle < rotationVelocity) angle = targetAngle;
-                else angle -= rotationVelocity;
+                if (baseAngle - targetAngle < rotationVelocity) baseAngle = targetAngle;
+                else baseAngle -= rotationVelocity;
             }
             else
             {
-                if (angle - 360 - targetAngle > -rotationVelocity) angle = targetAngle;
-                else angle -= 360 - rotationVelocity;
+                if (-baseAngle + 360 + targetAngle < rotationVelocity) baseAngle = targetAngle;
+                else baseAngle += rotationVelocity;
             }
         }
 
-        Debug.Log(targetAngle + "  " + angle);
 
-        if (angle > 360) angle %= 360;*/
+        if (baseAngle > 360) baseAngle %= 360;
+        if (baseAngle < 0) baseAngle += 360;
+
+        angle = baseAngle;
 
         float angleIncrease = fov / rayCount;
 
@@ -108,6 +112,6 @@ public class FieldOfView : MonoBehaviour
 
     public void SetAngle(float angle)
     {
-        this.angle = angle - fov / 2;
+        targetAngle = angle - fov / 2;
     }
 }
