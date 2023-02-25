@@ -15,7 +15,7 @@ TagManager:
   - Mask
   - BehindMask
   - Black
-  - 
+  - Player
   - 
   - 
   - 
@@ -41,6 +41,15 @@ TagManager:
   - name: Down
     uniqueID: 2896899311
     locked: 0
+  - name: Background
+    uniqueID: 3236557791
+    locked: 0
+  - name: ObjBottom
+    uniqueID: 3245843113
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Top
+    uniqueID: 4167959559
     locked: 0
