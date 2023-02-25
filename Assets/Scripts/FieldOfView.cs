@@ -5,14 +5,17 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float fov = 90f;
-    [SerializeField] private int rayCount = 150;
-    [SerializeField] private float viewDistance = 10f;
+    [SerializeField] private float fov;
+    [SerializeField] private int rayCount;
+    [SerializeField] private float viewDistance;
+    [SerializeField] private float rotationVelocity;
 
     Vector3 origin;
     float angle;
-
+    float targetAngle;
     Mesh mesh;
+
+
     void Start()
     {
         mesh = new Mesh();
@@ -21,6 +24,38 @@ public class FieldOfView : MonoBehaviour
 
     public void LateUpdate()
     {
+        /*if (angle < 0) angle += 360;
+        if (targetAngle > angle)
+        {
+            if (targetAngle - angle < 180)
+            {
+                if (targetAngle - angle < rotationVelocity) angle = targetAngle;
+                else angle += rotationVelocity;
+            }
+            else
+            {
+                if (angle + 360 - targetAngle < rotationVelocity) angle = targetAngle;
+                else angle += 360 - rotationVelocity;
+            }
+        }
+        else
+        {
+            if (angle - targetAngle < 180)
+            {
+                if (angle - targetAngle < rotationVelocity) angle = targetAngle;
+                else angle -= rotationVelocity;
+            }
+            else
+            {
+                if (angle - 360 - targetAngle > -rotationVelocity) angle = targetAngle;
+                else angle -= 360 - rotationVelocity;
+            }
+        }
+
+        Debug.Log(targetAngle + "  " + angle);
+
+        if (angle > 360) angle %= 360;*/
+
         float angleIncrease = fov / rayCount;
 
         Vector3[] verticles = new Vector3[rayCount + 1 + 1];
