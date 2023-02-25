@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private int health = 100;
-    [SerializeField] private float _speed;
+    [SerializeField] private float _walkSpeed;
+    [SerializeField] private float _runSpeed;
+
+    public bool isRunning = false;
 
     private float hInput;
     private float vInput;
     private Animator anim;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -17,8 +21,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        hInput = Input.GetAxis("Horizontal") * _speed;
-        vInput = Input.GetAxis("Vertical") * _speed;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            hInput = Input.GetAxis("Horizontal") * _runSpeed;
+            vInput = Input.GetAxis("Vertical") * _runSpeed;
+            isRunning = true;
+        }
+        else
+        {
+            hInput = Input.GetAxis("Horizontal") * _walkSpeed;
+            vInput = Input.GetAxis("Vertical") * _walkSpeed;
+            isRunning = false;
+        }
     }
 
     private void FixedUpdate()
@@ -33,5 +47,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
         this.transform.Translate(Vector2.right * Time.fixedDeltaTime * hInput);
         this.transform.Translate(Vector2.up * Time.fixedDeltaTime * vInput);
+    }
+
+    public float GetRunningAngle()
+    {
+         return Mathf.Atan2(hInput, -vInput) * 180 / Mathf.PI;
     }
 }
