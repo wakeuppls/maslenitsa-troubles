@@ -18,6 +18,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float runPlayerDetectorDistance;
     [SerializeField] float maxStayingTime;
 
+    private AudioSource audioSource;
+
 
     PlayerBehaviour playerBehaviour;
     GameObject player;
@@ -40,6 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent.updateUpAxis = false;
         player = GameObject.FindGameObjectWithTag("Player");
         playerBehaviour = player.GetComponent<PlayerBehaviour>();
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -60,11 +63,14 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 stayingTime += Time.deltaTime;
                 animator.Play("chucha_idle");
+                audioSource.Stop();
             }
             else
             {
                 stayingTime = 0;
                 animator.Play("chucha_walk");
+                if (!audioSource.isPlaying)
+                    audioSource.Play();
             }
             if (stayingTime > maxStayingTime)
             {

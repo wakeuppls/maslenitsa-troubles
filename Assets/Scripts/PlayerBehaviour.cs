@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [SerializeField] private AudioSource steps;
-
     [SerializeField] private int health = 100;
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _runSpeed;
-    
+    private AudioSource audioSource;
 
     [SerializeField] private GameObject viewSphere;
     [SerializeField] private float blinTimerUp = 5f;
@@ -35,6 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
         sphereScale[1] = viewSphere.transform.localScale.y;
         anim = GetComponent<Animator>();
         gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -44,12 +43,14 @@ public class PlayerBehaviour : MonoBehaviour
             hInput = Input.GetAxis("Horizontal") * _runSpeed;
             vInput = Input.GetAxis("Vertical") * _runSpeed;
             isRunning = true;
+            audioSource.pitch = 1.5f;
         }
         else
         {
             hInput = Input.GetAxis("Horizontal") * _walkSpeed;
             vInput = Input.GetAxis("Vertical") * _walkSpeed;
             isRunning = false;
+            audioSource.pitch = 1f;
         }
     }
 
@@ -58,15 +59,16 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             anim.Play("Player_walk");
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
         else
         {
             anim.Play("Player_idle");
+            audioSource.Stop();
         }
-        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_walk") && !steps.isPlaying)
-          //  steps.Play();
-        //else
-          //  steps.Stop();
 
         this.transform.Translate(Vector2.right * Time.fixedDeltaTime * hInput);
         this.transform.Translate(Vector2.up * Time.fixedDeltaTime * vInput);
