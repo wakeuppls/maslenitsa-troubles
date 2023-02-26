@@ -54,8 +54,6 @@ public class EnemyBehaviour : MonoBehaviour
 
         isPlayerVisible = false;
 
-        Debug.Log(stayingTime);
-
         if (isPlayerDetected)
         {
             if (agent.velocity.magnitude == 0)
