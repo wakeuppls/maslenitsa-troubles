@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
             angle = -Mathf.Atan2(x, y) * 180 / Mathf.PI;
         }
 
-        fov.SetOrigin(transform.position);
+        fov.SetOrigin(transform.position);  
         fov.SetAngle(angle);
     }
 }
