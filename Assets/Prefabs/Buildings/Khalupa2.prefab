@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 6693990654803917295}
   - component: {fileID: 6831962757643404354}
   - component: {fileID: 7682626559773302994}
+  - component: {fileID: -5059594246799045496}
   m_Layer: 11
   m_Name: Khalupa2
   m_TagString: Untagged
@@ -210,3 +211,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e8382555725cf4ba2a303da75dd579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5059594246799045496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4554981639524924884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

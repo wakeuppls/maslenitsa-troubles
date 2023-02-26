@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyBehaviour : MonoBehaviour
 {
     NavMeshAgent agent;
-    [SerializeField] PlayerBehaviour playerBehaviour;
+    [SerializeField] Animator animator;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Transform[] navPoint;
     [SerializeField] float enemyPatrolSpeed;
@@ -18,6 +18,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float runPlayerDetectorDistance;
     [SerializeField] float maxStayingTime;
 
+
+    PlayerBehaviour playerBehaviour;
+    GameObject player;
     Vector3 lastPlayerPos;
     int destinationPointId = 0;
     float pointDetectorDistance = 0.3f;
@@ -35,7 +38,8 @@ public class EnemyBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerBehaviour = player.GetComponent<PlayerBehaviour>();
 
     }
 
@@ -57,8 +61,13 @@ public class EnemyBehaviour : MonoBehaviour
             if (agent.velocity.magnitude == 0)
             {
                 stayingTime += Time.deltaTime;
+                animator.Play("chucha_idle");
             }
-            else stayingTime = 0;
+            else
+            {
+                stayingTime = 0;
+                animator.Play("chucha_walk");
+            }
             if (stayingTime > maxStayingTime)
             {
                 isPlayerDetected = false;
@@ -79,6 +88,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
+            animator.Play("chucha_walk");
             float x = transform.position.x - navPoint[destinationPointId].position.x;
             float y = transform.position.y - navPoint[destinationPointId].position.y;
             float dist = Mathf.Sqrt(x * x + y * y);

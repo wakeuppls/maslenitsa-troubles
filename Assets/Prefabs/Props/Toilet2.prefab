@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 9041900692526109705}
   - component: {fileID: 6845449385963320063}
   - component: {fileID: -5925804127760229677}
-  - component: {fileID: -6071865185836858872}
   - component: {fileID: 2585024713967139765}
+  - component: {fileID: -6071865185836858872}
+  - component: {fileID: 6878686493427456920}
   m_Layer: 11
   m_Name: Toilet2
   m_TagString: Untagged
@@ -100,32 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e8382555725cf4ba2a303da75dd579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-6071865185836858872
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6877899683077413633}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.375, y: 2.3125}
-    newSize: {x: 1.375, y: 2.3125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 2.5}
-  m_EdgeRadius: 0
 --- !u!61 &2585024713967139765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,6 +127,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.825, y: 0.55}
   m_EdgeRadius: 0
+--- !u!61 &-6071865185836858872
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877899683077413633}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.375, y: 2.3125}
+    newSize: {x: 1.375, y: 2.3125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.5}
+  m_EdgeRadius: 0
+--- !u!114 &6878686493427456920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877899683077413633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &7983573135888724195
 GameObject:
   m_ObjectHideFlags: 0
