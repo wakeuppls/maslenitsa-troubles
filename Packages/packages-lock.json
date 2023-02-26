@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.h8man.2d.navmeshplus": {
+      "version": "file:C:/Users/The Frog/Downloads/NavMeshPlus-master",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "7.0.5",
       "depth": 1,
