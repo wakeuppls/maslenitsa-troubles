@@ -111,6 +111,7 @@ public class PlayerBehaviour : MonoBehaviour
         else if (collision.CompareTag("Key"))
         {
             haveKey = true;
+            Destroy(collision.gameObject);
         }
     }
 }
