@@ -25,6 +25,8 @@ public class PlayerBehaviour : MonoBehaviour
     private float vInput;
     private Animator anim;
 
+    private bool haveKey = false;
+
     private void Start()
     {
         sphereScale[0] = viewSphere.transform.localScale.x;
@@ -104,6 +106,11 @@ public class PlayerBehaviour : MonoBehaviour
             viewSphere.transform.localScale = new Vector3(sphereScale[0], sphereScale[1]);
             Destroy(collision.gameObject);
             isBlinUp = true;
+            blinFullTimer = 0;
+        }
+        else if (collision.CompareTag("Key"))
+        {
+            haveKey = true;
         }
     }
 }
