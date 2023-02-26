@@ -40,7 +40,7 @@ public class TransparancyObject : MonoBehaviour
     {
         if (insideObject)
         {
-            if (transform.position.y >= tranformPlayer.GetComponent<BoxCollider2D>().bounds.min.y)
+            if (transform.position.y >= tranformPlayer.position.y)
             {
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerID = SortingLayer.NameToID("ObjBottom");
             }
