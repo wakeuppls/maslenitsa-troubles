@@ -2597,6 +2597,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1854464553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1831915322329967887, guid: fee2f5410fd4eec44ac79597fbe9c028, type: 3}
+  m_PrefabInstance: {fileID: 1831915323714588433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854464540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c612768fcc054eb83eae99c300072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854480868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,6 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a95d301b092e643ac342f20a6fb087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBehaviour: {fileID: 1854464553}
   layerMask:
     serializedVersion: 2
     m_Bits: 15479
@@ -2736,8 +2748,8 @@ MonoBehaviour:
   enemyPatrolSpeed: 3.5
   enemyStalkSpeed: 6
   rayCount: 50
-  fov: 50
-  walkPlayerDetectorDistance: 4
+  fov: 110
+  walkPlayerDetectorDistance: 0
   runPlayerDetectorDistance: 8
   maxStayingTime: 2
 --- !u!212 &1870502663
