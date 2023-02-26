@@ -13,10 +13,11 @@ public class DialogBehaviour : MonoBehaviour
 
     private void Start()
     {
+        dialogPanel.SetActive(true);
         tmpText.text = "";
-        for (int i = 0; i < textString.Length; i++)
+        for (int i = 0; i < textString[0].Length; i++)
         {
-            tmpText.text += textString[i];
+            tmpText.text += textString[0][i];
             Thread.Sleep(200);
         }
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [SerializeField] private AudioSource steps;
+
     [SerializeField] private int health = 100;
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _runSpeed;
@@ -25,7 +27,7 @@ public class PlayerBehaviour : MonoBehaviour
     private float vInput;
     private Animator anim;
 
-    private bool haveKey = false;
+    public bool haveKey = false;
 
     private void Start()
     {
@@ -61,6 +63,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             anim.Play("Player_idle");
         }
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_walk") && !steps.isPlaying)
+          //  steps.Play();
+        //else
+          //  steps.Stop();
+
         this.transform.Translate(Vector2.right * Time.fixedDeltaTime * hInput);
         this.transform.Translate(Vector2.up * Time.fixedDeltaTime * vInput);
 
@@ -114,4 +121,6 @@ public class PlayerBehaviour : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
+    
 }
