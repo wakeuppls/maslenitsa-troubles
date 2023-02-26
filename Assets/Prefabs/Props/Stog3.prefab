@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8384639157163974857}
   - component: {fileID: 2456596267779401231}
   - component: {fileID: 8982987826223974886}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Stog3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
