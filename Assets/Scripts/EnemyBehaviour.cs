@@ -132,4 +132,12 @@ public class EnemyBehaviour : MonoBehaviour
             rayAngleRad -= angInc;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("YOU ARE DEAD (bitch v2.0)");
+        }
+    }
 }

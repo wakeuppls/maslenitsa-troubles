@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _runSpeed;
     private AudioSource audioSource;

@@ -28,5 +28,11 @@ public class PlayerController : MonoBehaviour
 
         fov.SetOrigin(transform.position);  
         fov.SetAngle(angle);
+
+        if(fov.GetAngle() > 90 && fov.GetAngle() < 270)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else GetComponent<SpriteRenderer>().flipX = false;
     }
 }

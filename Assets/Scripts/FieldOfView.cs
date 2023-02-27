@@ -114,4 +114,6 @@ public class FieldOfView : MonoBehaviour
     {
         targetAngle = angle - fov / 2;
     }
+
+    public float GetAngle() => baseAngle - fov / 2;
 }
