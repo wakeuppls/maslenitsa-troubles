@@ -46,8 +46,8 @@ public class GatesBehaviour : MonoBehaviour
         }
         else if (isOpening && timer >= maxTimer)
         {
-            //SceneManager.LoadScene("EndGame");
-            Debug.Log("LoadScene");
+            SceneManager.LoadScene("EndGame");
+            //Debug.Log("LoadScene");
         }
     }
 }

@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: ae3aad64a9fe464499f095a440e160c1
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 106b397828ebf8140a004e4b0b116263
+  - enabled: 1
+    path: Assets/Scenes/Misha.unity
+    guid: bf4aac3609b328549892d851e4e111ad
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: e465e9f156eb7e3478805e640dc8d300
+  - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: 6f8909d9fa8519346a070fcb996529f8
   m_configObjects: {}
